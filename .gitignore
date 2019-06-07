@@ -1,0 +1,9 @@
+.allure/
+.idea/
+logs/
+allure-results/
+target/
+at-pst-rest.iml
+*.iml
+.DS_Store
+build

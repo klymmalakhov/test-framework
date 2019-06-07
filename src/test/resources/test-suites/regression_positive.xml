@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression suite">
+
+    <listeners>
+        <listener class-name="utils.listeners.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="All tests">
+        <groups>
+            <run>
+                <exclude name="negative"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="rest.*"/>
+        </packages>
+    </test>
+</suite>
