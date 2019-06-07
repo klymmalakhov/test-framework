@@ -9,9 +9,11 @@ import rest.BaseTest;
 import rest.methods.LookupRest;
 import rest.models.Cocktail;
 
+import java.util.HashMap;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
+import static utils.Groups.negative;
 import static utils.Groups.positive;
 
 @Feature("Lookup service")
@@ -48,5 +50,56 @@ public class GetLookupCocktailTest extends BaseTest {
 
     }
 
+    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with nonexistent id", groups = {negative})
+    public void getLookupCocktailWithNonexistentIdTest() {
+
+        Response response = new LookupRest().getLookUp("i", "123123123");
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("drinks", isEmptyOrNullString());
+
+    }
+
+    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with incorrect id ", groups = {negative})
+    public void getLookupCocktailWithIncorrectIdTest() {
+
+        Response response = new LookupRest().getLookUp("i", "asdasd");
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body(is(""));
+
+    }
+
+    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with empty id ", groups = {negative})
+    public void getLookupCocktailWithEmptyIdTest() {
+
+        Response response = new LookupRest().getLookUp("i", "");
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body(is(""));
+
+    }
+
+    @Test(description = "NEGATIVE - Test look up details functionality for cocktail and ingredient ", groups = {negative})
+    public void getLookupCocktailWithDoubleIdTest() {
+
+        Response response = new LookupRest().getLookUp(new HashMap<String, String>() {{
+            put("i", "11239");
+            put("iid", "476");
+        }});
+        response
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("drinks", notNullValue())
+                .body("ingredients", isEmptyOrNullString());
+
+    }
 }
 
