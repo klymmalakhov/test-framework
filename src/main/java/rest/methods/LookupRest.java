@@ -43,4 +43,14 @@ public class LookupRest {
                 .extract().response();
     }
 
+    @Step("PUT " + LOOKUP + " - Lookup deleting some data using " + SERVICE_NAME )
+    public Response deleteLookUp(String lookupType, String lookupValue) {
+        return given()
+                .param(lookupType, lookupValue)
+                .when()
+                .put(LOOKUP)
+                .then()
+                .extract().response();
+    }
+
 }

@@ -113,5 +113,19 @@ public class GetLookupCocktailTest extends BaseTest {
                 .body(containsString("405 - HTTP verb used to access this page is not allowed"));
 
     }
+
+    @Test(description = "NEGATIVE - Test look up details functionality for trying to delete some data by id ", groups = {negative})
+    public void deleteLookupCocktailWithEmptyIdTest() {
+
+        Response response = new LookupRest().deleteLookUp("i", "11239");
+        response
+                .then()
+                .assertThat()
+                .statusCode(405)
+                .body(containsString("405 - HTTP verb used to access this page is not allowed"));
+
+    }
+
+
 }
 
