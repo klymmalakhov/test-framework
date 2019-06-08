@@ -33,4 +33,14 @@ public class LookupRest {
                 .extract().response();
     }
 
+    @Step("PUT " + LOOKUP + " - Lookup pulling some data using " + SERVICE_NAME )
+    public Response putLookUp(String lookupType, String lookupValue) {
+        return given()
+                .param(lookupType, lookupValue)
+                .when()
+                .put(LOOKUP)
+                .then()
+                .extract().response();
+    }
+
 }
