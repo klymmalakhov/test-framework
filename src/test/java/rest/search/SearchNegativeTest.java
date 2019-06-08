@@ -17,8 +17,8 @@ import static utils.Groups.negative;
 @Story("Provide a correct response for wrong request for Search service")
 public class SearchNegativeTest extends BaseTest {
 
-    @Test(description = "NEGATIVE - Test search functionality for cocktail with nonexistent id", groups = {negative})
-    public void getSearchCocktailWithNonexistentIdTest() {
+    @Test(description = "NEGATIVE - Test search functionality with nonexistent id", groups = {negative})
+    public void getSearchWithNonexistentIdTest() {
 
         Response response = new SearchRest().getSearch("i", "123123123");
         response
@@ -28,8 +28,8 @@ public class SearchNegativeTest extends BaseTest {
                 .body("drinks", isEmptyOrNullString());
     }
 
-    @Test(description = "NEGATIVE - Test search functionality for cocktail with incorrect id ", groups = {negative})
-    public void getSearchCocktailWithIncorrectIdTest() {
+    @Test(description = "NEGATIVE - Test search functionality with incorrect id ", groups = {negative})
+    public void getSearchWithIncorrectIdTest() {
 
         Response response = new SearchRest().getSearch("i", "asdasd");
         response
@@ -39,8 +39,8 @@ public class SearchNegativeTest extends BaseTest {
                 .body("ingredients", nullValue());
     }
 
-    @Test(description = "NEGATIVE - Test search functionality for cocktail with empty id ", groups = {negative})
-    public void getSearchCocktailWithEmptyIdTest() {
+    @Test(description = "NEGATIVE - Test search functionality with empty id ", groups = {negative})
+    public void getSearchWithEmptyIdTest() {
 
         Response response = new SearchRest().getSearch("i", "");
         response
@@ -51,7 +51,7 @@ public class SearchNegativeTest extends BaseTest {
     }
 
     @Test(description = "NEGATIVE - Test search functionality for cocktail and ingredient ", groups = {negative})
-    public void getSearchCocktailWithDoubleIdTest() {
+    public void getSearchCocktailAndIngredientWithDoubleIdTest() {
 
         Response response = new SearchRest().getSearch(new HashMap<String, String>() {{
             put("i", "Vodka");

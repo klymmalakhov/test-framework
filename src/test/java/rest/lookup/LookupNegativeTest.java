@@ -17,8 +17,8 @@ import static utils.Groups.negative;
 @Story("Provide a correct response for wrong request for Lookup service")
 public class LookupNegativeTest extends BaseTest {
 
-    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with nonexistent id", groups = {negative})
-    public void getLookupCocktailWithNonexistentIdTest() {
+    @Test(description = "NEGATIVE - Test look up details functionality with nonexistent id", groups = {negative})
+    public void getLookupWithNonexistentIdTest() {
 
         Response response = new LookupRest().getLookUp("i", "123123123");
         response
@@ -28,8 +28,8 @@ public class LookupNegativeTest extends BaseTest {
                 .body("drinks", isEmptyOrNullString());
     }
 
-    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with incorrect id ", groups = {negative})
-    public void getLookupCocktailWithIncorrectIdTest() {
+    @Test(description = "NEGATIVE - Test look up details functionality with incorrect id ", groups = {negative})
+    public void getLookupWithIncorrectIdTest() {
 
         Response response = new LookupRest().getLookUp("i", "asdasd");
         response
@@ -39,8 +39,8 @@ public class LookupNegativeTest extends BaseTest {
                 .body(is(""));
     }
 
-    @Test(description = "NEGATIVE - Test look up details functionality for cocktail with empty id ", groups = {negative})
-    public void getLookupCocktailWithEmptyIdTest() {
+    @Test(description = "NEGATIVE - Test look up details functionality with empty id ", groups = {negative})
+    public void getLookupWithEmptyIdTest() {
 
         Response response = new LookupRest().getLookUp("i", "");
         response
@@ -51,7 +51,7 @@ public class LookupNegativeTest extends BaseTest {
     }
 
     @Test(description = "NEGATIVE - Test look up details functionality for cocktail and ingredient ", groups = {negative})
-    public void getLookupCocktailWithDoubleIdTest() {
+    public void getLookupCocktailAndIngredientsWithDoubleIdTest() {
 
         Response response = new LookupRest().getLookUp(new HashMap<String, String>() {{
             put("i", "11239");

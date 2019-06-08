@@ -5,6 +5,10 @@ Main task:
 - Pick 2 APIs from the list in https://www.thecocktaildb.com/api.php
 - Write 2-3 tests for each API in framework of your choosing
 
+##### Test scenarios
+
+Test cases located at the test_scenarios folder
+
 ##### **HOW TO RUN**
 
 ```sh
