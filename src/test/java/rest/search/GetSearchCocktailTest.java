@@ -3,14 +3,14 @@ package rest.search;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import rest.BaseTest;
 import rest.methods.SearchRest;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static utils.Groups.negative;
 import static utils.Groups.positive;
 
@@ -34,7 +34,8 @@ public class GetSearchCocktailTest extends BaseTest {
         Response response = new SearchRest().getSearch(searchType, searchValue);
         response
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
+                .header("Content-Type", equalTo("application/json"))
                 .body("drinks", notNullValue())
                 .body("drinks.strDrink", hasItem(searchValue))
                 .body("drinks.idDrink", hasItem(oneOfId))
@@ -47,7 +48,8 @@ public class GetSearchCocktailTest extends BaseTest {
         Response response = new SearchRest().getSearch(searchType, searchValue);
         response
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
+                .header("Content-Type", equalTo("application/json"))
                 .body("drinks", notNullValue())
                 .body("drinks.strDrink", hasItem(searchValue))
                 .body("drinks.idDrink", hasItem(oneOfId))

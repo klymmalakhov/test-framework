@@ -1,21 +1,20 @@
-## **REST API JAVA autotests**
+## **REST API JAVA automated tests**
 
 Main task:
 
-* Pick 2 APIs from the list in https://www.thecocktaildb.com/api.php
-
-* Write 2-3 tests for each API in framework of your choosing
+- Pick 2 APIs from the list in https://www.thecocktaildb.com/api.php
+- Write 2-3 tests for each API in framework of your choosing
 
 ##### **HOW TO RUN**
 
 ```sh
-$ mvn clean test -Dparallel=classes -DthreadCount=10 -DbaseURI=https://www.thecocktaildb.com/ -Dsuite=regression
+$ mvn clean test -Dparallel=classes -DthreadCount=3 -DbaseURI=https://www.thecocktaildb.com/ -Dsuite=regression
 
 ```
 - -Dparallel=classes - parallel tests by java classes
-- -DthreadCount=10 - count of threads
+- -DthreadCount=3 - count of threads
 - -DbaseURI=https://www.thecocktaildb.com/ - endpoint base url (proxy endpoint)
-- -Dsuite=regression - test suite
+- -Dsuite=regression - test suite. There're possibility to run [regression, positive, negative] suits.
 
 ##### **HOW TO GET REPORT**
 

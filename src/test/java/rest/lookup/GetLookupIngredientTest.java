@@ -3,6 +3,7 @@ package rest.lookup;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import rest.BaseTest;
@@ -10,8 +11,7 @@ import rest.methods.LookupRest;
 import rest.models.Ingredient;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static utils.Groups.positive;
 
 @Feature("Lookup service")
@@ -34,7 +34,8 @@ public class GetLookupIngredientTest extends BaseTest {
         Response response = new LookupRest().getLookUp(searchType, ingredient.getIdIngredient());
         response
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
+                .header("Content-Type", equalTo("application/json"))
                 .body("ingredients", notNullValue())
                 .body("ingredients.idIngredient", hasItem(ingredient.getIdIngredient()))
                 .body("ingredients.strIngredient", hasItem(ingredient.getStrIngredient()))
