@@ -2,18 +2,20 @@ package utils.report;
 
 import org.apache.tika.io.IOUtils;
 import utils.properties.PropertyHolder;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
-
 import static java.lang.System.getProperty;
 
 public class AllureEnvironmentUtils {
 
     private static final File file = new File("target/allure-results/environment.properties");
 
+    /**
+     * Creates the allure properties for the report displaying
+     *
+     */
     public static void create() {
 
         if (!file.exists()) {
@@ -39,6 +41,11 @@ public class AllureEnvironmentUtils {
         }
     }
 
+    /**
+     * Get system property, which were established during running application
+     * @param propKey the key of needed property
+     * @return value of searched property
+     */
     private static String getPropertiesValue(String propKey) {
         String propertyValue = getProperty(propKey);
         if (propertyValue != null) {

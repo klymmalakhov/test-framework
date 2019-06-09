@@ -7,9 +7,7 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import rest.BaseTest;
 import rest.methods.LookupRest;
-
 import java.util.HashMap;
-
 import static org.hamcrest.Matchers.*;
 import static utils.Groups.negative;
 

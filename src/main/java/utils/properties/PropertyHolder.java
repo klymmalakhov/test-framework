@@ -5,6 +5,12 @@ import java.io.InputStream;
 
 public class PropertyHolder {
 
+    /**
+     * The method works with config property file and gives the value of each property that is located here
+     *
+     * @param propertyName name of seeked property
+     * @return value of seeked property
+     */
     public static String getPropValue(String propertyName) {
         String namePropertyFile = "config.properties";
         InputStream inputStream = PropertyHolder.class.getClassLoader().getResourceAsStream(namePropertyFile);

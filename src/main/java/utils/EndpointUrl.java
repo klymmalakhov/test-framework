@@ -1,5 +1,10 @@
 package utils;
 
+/**
+ * In this class we collect end-points which are using during the testing.
+ * The property file is not relevant to use because end-points can be modified (user key)
+ */
+
 public class EndpointUrl {
 
     //Global
@@ -10,6 +15,5 @@ public class EndpointUrl {
 
     //look up
     public final static String LOOKUP = API_KEY + "lookup.php";
-
 
 }

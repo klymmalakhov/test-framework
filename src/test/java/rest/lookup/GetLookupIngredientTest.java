@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import rest.BaseTest;
 import rest.methods.LookupRest;
 import rest.models.Ingredient;
-
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 import static utils.Groups.positive;
