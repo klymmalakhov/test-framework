@@ -18,7 +18,6 @@ $ mvn clean test
 
 In case if you would like to specify another details you can use
  
-```sh
 $ mvn clean test -Dparallel=classes -DthreadCount=3 -DbaseURI=https://www.thecocktaildb.com/ -Dsuite=regression
 
 ```
