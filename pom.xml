@@ -33,6 +33,7 @@
         <lombok.version>1.18.6</lombok.version>
         <jaxb.version>2.2.11</jaxb.version>
         <isLog>true</isLog>
+
         <!-- Versions of libraries: Plugins -->
         <maven-surefire.version>2.22.1</maven-surefire.version>
 
@@ -41,13 +42,9 @@
         <resource-test.directory>${project.basedir}/src/test/resources</resource-test.directory>
         <allure-results.directory>${project.build.directory}/allure-results</allure-results.directory>
 
-        <!-- Links-->
-        <allure-tms.link-pattern>https://testrail.exness.io/index.php?/cases/view/{}</allure-tms.link-pattern>
-        <allure-issue.link-pattern>https://jira.exness.io/browse/{}</allure-issue.link-pattern>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -106,16 +103,16 @@
             <artifactId>json-schema-core</artifactId>
             <version>1.2.5</version>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>${json-simple.version}</version>
-        </dependency>
         <!-- rest validation -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${restassured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
         </dependency>
     </dependencies>
 
@@ -159,14 +156,6 @@
                         <property>
                             <name>allure.results.directory</name>
                             <value>${allure-results.directory}</value>
-                        </property>
-                        <property>
-                            <name>allure.link.tms.pattern</name>
-                            <value>${allure-tms.link-pattern}</value>
-                        </property>
-                        <property>
-                            <name>allure.link.issue.pattern</name>
-                            <value>${allure-issue.link-pattern}</value>
                         </property>
                     </systemProperties>
                     <argLine>
